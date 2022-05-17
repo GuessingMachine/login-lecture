@@ -3,12 +3,10 @@
 const express = require("express");
 const router = express.Router();
 
-router.get("/",(req, res)=>{
-    res.render("home/index");
-});
+const ctrl = require("./home.ctrl") // 받아옴
 
-router.get("/login",(req, res)=>{
-    res.render("home/login");
-});
+router.get("/", ctrl.hello);
 
-module.exports = router//외부에서 사용할 수 있도록 해줌
+router.get("/login", ctrl.login);
+
+module.exports = router
