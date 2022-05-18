@@ -7,13 +7,9 @@ const app = express();
 //라우팅
 const home = require("./routes/home");
 
-const PORT = 3000;
-
 app.set("views", "./views"); 
 app.set("view engine", "ejs");
 
 app.use("/", home);
 
-app.listen(PORT, function() {
-    console.log("서버 가동");
-});
+module.exports = app; // www.js에 받을 수 있게 보내줌
