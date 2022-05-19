@@ -12,4 +12,4 @@ app.set("view engine", "ejs");
 
 app.use("/", home);
 
-module.exports = app; // www.js에 받을 수 있게 보내줌
+module.exports = app; 
