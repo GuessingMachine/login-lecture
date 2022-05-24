@@ -19,6 +19,7 @@ function login(){
             "Content-Type": "application/json",
         },
         body: JSON.stringify(req), 
-    }); 
+    }).then((res) => res.json()) // 서버의 응답은 then으로 가져온다
+    .then((res) => console.log(res)); // promise type이라 then으로 접근해야함
 }
 
