@@ -20,6 +20,16 @@ function login(){
         },
         body: JSON.stringify(req), 
     }).then((res) => res.json()) // 서버의 응답은 then으로 가져온다
-    .then((res) => console.log(res)); // promise type이라 then으로 접근해야함
+    .then((res)=>{
+        if (res.success){
+            location.href = '/'; // 로그인 성공시 루트로 이동
+        }else{
+            alert(res.msg); // 로그인 실패시 같이 온 msg를 알림
+        }
+    })
+    .catch((err) => { // 로그인 기능  오류 알림
+        console.error(new Error("로그인 중 에러 발생")); // "Error : 로그인 중 에러 발생" 이라고 나옴
+        //  console.error("로그인 중 에러 발생"); // "로그인 중 에러 발생" 이라고 나옴
+    })
 }
 
