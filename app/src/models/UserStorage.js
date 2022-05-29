@@ -8,15 +8,27 @@ class UserStorage{
         name: ["프로미스나인", "플로버", "영원히"],
     };
 
-    static getUsers(...fields){ //...변수명 하면 받아 온 값을 변수명을 가진 배열형태로 저장됨
+    static getUsers(...fields){ 
         const users = this.#users;
-        const newUsers = fields.reduce((newUsers, field)=>{ // newUsers는 값을 받는 곳이고, field은 fields의 값들을 순회한다.
-            if(users.hasOwnProperty(field)){ //hasOwnProperty는 field가 가지고 있는 키 값을 user가 가지고 있는지 확인 
+        const newUsers = fields.reduce((newUsers, field)=>{
+            if(users.hasOwnProperty(field)){ 
                 newUsers[field] = users[field];
             }
-            return newUsers; // 리턴 값으로 넘겨주게 되면, 다시 reduce의 파라미터인 newUsers에 들어간다.
-        }, {}); //uewUsers 초기값은 default : fields의 배열의 초기값, 하지만 유저가 설정이 가능하다 
+            return newUsers; 
+        }, {}); 
         return newUsers;
+    }
+
+    static getUserInfo(id){ //아이디와 관련된 정보 찾아서 반환
+        const users = this.#users; // 회원 정보
+        const idx = users.id.indexOf(id); // 입력한 id관련된 인덱스 번호
+        const usersKeys = Object.keys(users);
+        const userInfo = usersKeys.reduce((newUser, info) => {
+            newUser[info] = users[info][idx];
+            return newUser;
+        }, {});
+        
+        return userInfo;
     }
 }
 
