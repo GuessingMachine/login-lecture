@@ -10,6 +10,10 @@ const output ={ // 랜더링
     login : (req, res)=>{
         res.render("home/login");
     },
+
+    register : (req, res) => {
+        res.render("home/register");
+    }
 };
 
 const process = { // 로그인 인증
