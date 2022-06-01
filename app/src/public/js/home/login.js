@@ -13,6 +13,8 @@ function login(){
         psw : psword.value
     };
 
+    console.log(req.psw);
+
     fetch("/login", { // 로그인 API
         method: "POST", 
         headers: { 
