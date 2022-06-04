@@ -8,9 +8,9 @@ class User{
         this.body = body; // 클라이언트가 보낸 id, password가져옴
     }
 
-    login(){
+    async login(){
         const Client = this.body; // 클라이언트 정보
-        const {id, pw} = UserStorage.getUserInfo(Client.id); //클라이언트가 입력한 id가 있는지 확인해서 있으면 해당하는 아이디 비번 가져옴
+        const {id, pw} = await UserStorage.getUserInfo(Client.id); //클라이언트가 입력한 id가 있는지 확인해서 있으면 해당하는 아이디 비번 가져옴
     
         if(id){
             if( id === Client.id && pw === Client.psw){
