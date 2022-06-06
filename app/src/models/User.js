@@ -16,15 +16,20 @@ class User{
             if( id === Client.id && pw === Client.psw){
                 return { success: true };
             }
-            return { success: false, msg: "비밀번호가 틀렸습니다."};
+            return { success: false, msg: "비밀번호가 일치하지 않습니다."};
         }
         return { success: false, msg: "존재하지 않는 계정입니다."};
     }
 
-    register(){
+    async register(){
         const Client = this.body;
-        const response = UserStorage.save(Client);
-        return response;
+        try{
+            const response = await UserStorage.save(Client); // 저장하는데 시간걸리니까
+            return response;
+        }catch (err) {
+            return { success: false, msg: err };
+        }
+        
     }
 
 }
